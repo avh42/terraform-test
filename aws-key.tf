@@ -2,19 +2,18 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.0"
+      version = "~> 3.42"
     }
   }
+
+  required_version = ">= 0.13.5"
 }
 
-variable "key_name" {
-  description = "Name of the key pair"
-  type = string
-}
-
-variable "public_key" {
-  description = "Public key material of the key pair"
-  type = string
+provider "aws" {
+  # profile    = var.profile
+  # region     = var.region
+  # access_key = var.access_key
+  # secret_key = var.secret_key
 }
 
 resource "aws_key_pair" "deployer" {
